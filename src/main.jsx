@@ -1,16 +1,29 @@
-import { StrictMode } from 'react'
+import { StrictMode   } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { BrowserRouter , Route , Routes } from 'react-router-dom'
+import { RouterProvider , createBrowserRouter } from 'react-router-dom'
+// import createtrip from './create-trip/create-trip.jsx'
+import Createtrip from './create-trip/index.jsx'
+import Header from './components/custom/Header'
+const router = createBrowserRouter([
+  {
+    path: '/', 
+    element:<App/>
+  },
+  {
+    path:'/create-trip',
+    element:<Createtrip/>
+
+  }
+])
 
 createRoot(document.getElementById('root')).render(
 
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
-    </BrowserRouter>
-    
+  <React.StrictMode>
+    <Header/>
+    <RouterProvider router = {router} />
+  </React.StrictMode>
 
 )
